@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://github.com/eyevinn/easyvmaf_s3">
-    <img src="./logo.svg" alt="Logo" height="100">
+    <img src="https://raw.githubusercontent.com/Eyevinn/easyvmaf_s3/main/logo.svg" alt="Logo" height="100">
   </a>
 </h1>
 

@@ -49,6 +49,21 @@ docker run  --rm \
             -o s3://videos/640x360_750000_vmaf.json
 ```
 
+### Using a custom S3 endpoint
+
+For S3-compatible services like MinIO, you can specify a custom endpoint:
+
+```bash
+docker run  --rm \
+            -e AWS_ACCESS_KEY_ID=X \
+            -e AWS_SECRET_ACCESS_KEY=Y \
+            -e S3_ENDPOINT_URL=https://minio.example.com \
+            easyvmaf-s3 \
+            -r s3://videos/reference.mp4 \
+            -d s3://videos/640x360_750000.mp4 \
+            -o s3://videos/640x360_750000_vmaf.json
+```
+
 ### Run with `docker-compose`
 ```yml
 services:
@@ -58,6 +73,8 @@ services:
   environment:
     - AWS_ACCESS_KEY=X
     - AWS_SECRET_ACCESS_KEY=Y
+    # Optional: for custom S3-compatible endpoints
+    - S3_ENDPOINT_URL=https://minio.example.com
   command: easyvmaf-s3 -r s3://videos/reference.mp4 -d s3://videos/640x360_750000.mp4 -o s3://videos/640x360_750000_vmaf.json
 ```
 

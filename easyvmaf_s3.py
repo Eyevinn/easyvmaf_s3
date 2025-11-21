@@ -19,7 +19,11 @@ output_bucket, output_object = args.output.split('/',2)[-1].split('/',1)
 reference_file = "reference.mp4"
 distorted_file = "distorted.mp4"
 
-s3 = boto3.client('s3')
+s3_endpoint_url = os.environ.get('S3_ENDPOINT_URL')
+if s3_endpoint_url:
+    s3 = boto3.client('s3', endpoint_url=s3_endpoint_url)
+else:
+    s3 = boto3.client('s3')
 s3.download_file(reference_input_bucket, reference_input_object, reference_file)
 s3.download_file(distorted_input_bucket, distorted_input_object, distorted_file)
 
